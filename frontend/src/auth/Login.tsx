@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "../context/api";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import Cookies from "js-cookie";
 
 const Login: React.FC<any> = () => {
   const [email, setEmail] = useState("");
@@ -74,6 +73,7 @@ const Login: React.FC<any> = () => {
                 <input
                   type="email"
                   id="email"
+                  placeholder="Enter email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full p-2 border border-gray-300 rounded-md"
@@ -93,6 +93,7 @@ const Login: React.FC<any> = () => {
                   type="password"
                   id="password"
                   value={password}
+                  placeholder="Enter password"
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full p-2 border border-gray-300 rounded-md"
                 />

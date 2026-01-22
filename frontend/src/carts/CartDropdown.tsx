@@ -50,7 +50,7 @@ const CartDropdown: React.FC<any> = ({
     };
 
     fetchCartItems();
-  }, [onSubmit, isRefreshAfterDelete]);
+  }, [onSubmit, isRefreshAfterDelete, setCartData]);
 
   const toggleDropdown = () => {
     setIsOpen((prev) => !prev);
@@ -63,11 +63,11 @@ const CartDropdown: React.FC<any> = ({
 
       if (response.status === 200) {
         setCartItems((prevItems) =>
-          prevItems.filter((item) => item.id !== itemId)
+          prevItems.filter((item) => item.id !== itemId),
         );
         toastr.success(
           response.data.message || "Item removed successfully.",
-          "Item removed"
+          "Item removed",
         );
       } else {
         toastr.error("Failed to delete item from cart.", "Error");
@@ -87,14 +87,16 @@ const CartDropdown: React.FC<any> = ({
       prevItems.map((item) =>
         item.id === id
           ? { ...item, quantity: Math.max(item.quantity + change, 1) }
-          : item
-      )
+          : item,
+      ),
     );
   };
 
   const handleSelectChange = (id: number) => {
     setSelectedItems((prev) =>
-      prev.includes(id) ? prev.filter((itemId) => itemId !== id) : [...prev, id]
+      prev.includes(id)
+        ? prev.filter((itemId) => itemId !== id)
+        : [...prev, id],
     );
   };
 
@@ -114,7 +116,7 @@ const CartDropdown: React.FC<any> = ({
 
       if (response.status === 200) {
         setCartItems((prevItems) =>
-          prevItems.filter((item) => !selectedItems.includes(item.id))
+          prevItems.filter((item) => !selectedItems.includes(item.id)),
         );
         toastr.success(response.data.message, "Items removed");
         setSelectedItems([]);

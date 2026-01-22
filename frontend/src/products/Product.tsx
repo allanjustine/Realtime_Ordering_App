@@ -40,7 +40,7 @@ const ProductPage: React.FC<ProductProps> = memo(({ setOnSubmit }) => {
     return () => {
       channel.stopListening("OrderEvent");
     };
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     if (channelRead) {
@@ -49,7 +49,7 @@ const ProductPage: React.FC<ProductProps> = memo(({ setOnSubmit }) => {
       setUserBuyer("");
       setProductBought("");
     }
-  }, [channelRead]);
+  }, [channelRead, productBought, userBuyer, user]);
 
   useEffect(() => {
     document.title = "Ordering App | Products";

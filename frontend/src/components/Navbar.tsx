@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import Dropdown from "./Dropdown";
 import CartDropdown from "../carts/CartDropdown";
@@ -33,7 +33,7 @@ const Navbar: React.FC<NavbarProps> = ({ onSubmit }) => {
     return () => {
       document?.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [dropdownRef.current, buttonRef.current]);
+  }, [dropdownRef, buttonRef]);
 
   useEffect(() => {
     const handleScroll = () => {

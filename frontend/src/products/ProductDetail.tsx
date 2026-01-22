@@ -102,9 +102,7 @@ const ProductDetail: React.FC = () => {
                   viewBox="0 0 24 24"
                   fill="currentColor"
                   className={`size-6 ${
-                    index < Math.round(product.rating)
-                      ? "text-yellow-500"
-                      : "text-gray-300"
+                    index < product.rating ? "text-yellow-500" : "text-gray-300"
                   }`}
                 >
                   <path
@@ -124,8 +122,8 @@ const ProductDetail: React.FC = () => {
               {product.quantity <= 0
                 ? "Out of Stock"
                 : product.quantity === 1
-                ? `${product.quantity} pc`
-                : `${product.quantity} pcs`}
+                  ? `${product.quantity} pc`
+                  : `${product.quantity} pcs`}
             </p>
 
             <div className="mb-6">
